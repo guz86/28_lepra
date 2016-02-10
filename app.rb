@@ -38,6 +38,8 @@ post '/new' do
 		@error = 'Type post text'
 		return erb :new
 	end
+# вставка данных с формы
+	@db.execute 'insert into Posts (created_date, content) values (datetime(),?)',[content]
 
 	erb "You typed '#{content}'"
 end
