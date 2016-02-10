@@ -31,8 +31,13 @@ get '/new' do
   erb :new
 end
 
-post '/new' do
-	
+post '/new' do	
 	content = params[:content]
+# проверка параметров
+	if content.length <= 0
+		@error = 'Type post text'
+		return erb :new
+	end
+
 	erb "You typed '#{content}'"
 end
