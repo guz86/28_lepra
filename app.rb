@@ -43,5 +43,7 @@ post '/new' do
 # вставка данных с формы
 	@db.execute 'insert into Posts (created_date, content) values (datetime(),?)',[content]
 
+# на главную
+	redirect to('/')
 	erb "You typed '#{content}'"
 end
