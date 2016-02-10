@@ -60,12 +60,16 @@ get '/details/:post_id' do
 	post_id = params[:post_id]
 	results = @db.execute 'select * from Posts where id = ?', [post_id] 
 	@row = results[0]
+
 	erb :details
 end
 
 post '/details/:post_id' do
 	post_id = params[:post_id]
 	content = params[:content]
-	erb "Hello: #{post_id} #{content}"
 
+	@db.execute 'insert into Comments (created_date, content, post_id) 
+				values (datetime(),?,?)', [content, post_id]
+
+	redirect to('/details/' + post_id)
 end
