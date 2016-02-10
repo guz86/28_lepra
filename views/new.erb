@@ -1,6 +1,10 @@
 <h2>Add New Post</h2>
 <p>
 	<form action="/new" method="POST">
+	
+    <label>Введите имя:</label>
+    <input type="text" name='name' class="form-control" style="width: 200px" placeholder="Введите ваше имя">
+    <label>Введите сообщение:</label>
 	 	<textarea name="content" style="width: 400px" class="form-control" rows="6" placeholder="Type post text here"></textarea>
 	 	<br />
 	 	<button type="submit" class="btn btn-primary">Submit</button>
