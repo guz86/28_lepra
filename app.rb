@@ -13,8 +13,6 @@ before do
 	init_db
 end
 
-
-
 get '/' do
 	erb "Hello!"			
 end
