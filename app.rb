@@ -60,8 +60,8 @@ end
 # вывод информации о посте
 get '/details/:post_id' do
 	post_id = params[:post_id]
-	@results = @db.execute 'select * from Posts where id = ?', [post_id] 
-	@row = @results[0]
+	results = @db.execute 'select * from Posts where id = ?', [post_id] 
+	@row = results[0]
 
 # комментарии для поста
 	@comments = @db.execute 'select * from Comments where post_id = ? order by id', [post_id]
@@ -77,8 +77,8 @@ post '/details/:post_id' do
 # редирект на эту же страницу, если делать вызов на details там подтягиваются данные, требуется их потягивать
 #		redirect to('/details/' + post_id)
 # чтобы выводилась ошибка придется подтянуть все данные нужные для нашего представления details
-		@results = @db.execute 'select * from Posts where id = ?', [post_id] 
-		@row = @results[0]
+		results = @db.execute 'select * from Posts where id = ?', [post_id] 
+		@row =results[0]
 		@comments = @db.execute 'select * from Comments where post_id = ? order by id', [post_id]
 		@error = 'Type comment text'
 		return erb :details
