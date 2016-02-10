@@ -72,7 +72,12 @@ end
 post '/details/:post_id' do
 	post_id = params[:post_id]
 	content = params[:content]
-
+# проверка параметров
+	if content.length <= 0
+		@error = 'Type comment text'
+# редирект на эту же страницу, если делать вызов на details там подтягиваются данные, требуется их потягивать
+		redirect to('/details/' + post_id)
+	end
 	@db.execute 'insert into Comments (created_date, content, post_id) 
 				values (datetime(),?,?)', [content, post_id]
 
